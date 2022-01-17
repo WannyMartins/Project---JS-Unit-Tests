@@ -12,8 +12,20 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
-const average = () => {
-  
+const average = (array) => {
+  if (array.length === 0) {
+    return undefined;
+  }
+  let result = 0;
+  for (let i = 0; i < array.length; i += 1) {
+    if (typeof array[i] !== 'number') {
+      return undefined;
+    }
+      result += array[i];
+    }
+  result /= array.length;
+  result = Math.round(result);// uso desta função no qastack .... https://qastack.com.br/programming/7641818/how-can-i-remove-the-decimal-part-from-javascript-number
+  return result;
 };
 
 module.exports = average;
