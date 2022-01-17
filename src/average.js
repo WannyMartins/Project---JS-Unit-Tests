@@ -11,7 +11,7 @@
     - average([1, 1]) // Retorno: 1;
     - average([1, '2']) // Retorno: undefined;
 */
-
+// tive ajudinha do sumo na mentoria pra entender a logica
 const average = (array) => {
   if (array.length === 0) {
     return undefined;
