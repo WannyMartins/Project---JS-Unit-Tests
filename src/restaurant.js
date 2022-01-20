@@ -80,12 +80,20 @@
 // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
 const createMenu = (objetoPassadoPorParametro) => {
-  const menu = { 
+  const restaurante = { 
     fetchMenu: () => objetoPassadoPorParametro,
     consumption: [],
-    order: (request) => menu.consumption.push(request),
+    order: (request) => restaurante.consumption.push(request),
    };
-   return menu;
+   return restaurante;
 };
 
+const meuRestaurante = createMenu({
+  food: { coxinha: 3.90, sanduiche: 9.90 },
+  drinks: { agua: 3.90, cerveja: 6.90 },
+});
+
+meuRestaurante.order('coxinha');
+
+console.log(meuRestaurante.consumption);
 module.exports = createMenu;
