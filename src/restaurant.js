@@ -80,20 +80,35 @@
 // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
 const createMenu = (objetoPassadoPorParametro) => {
-  const restaurante = { 
+  const restaurante = {
     fetchMenu: () => objetoPassadoPorParametro,
     consumption: [],
-    order: (request) => restaurante.consumption.push(request),
-   };
-   return restaurante;
+    order: (request) => restaurante.consumption.push(request), // vi no codeReviw de Luá
+    pay: () => {
+      let conta = 0;
+      restaurante.consumption.forEach((produto) => {
+        if (restaurante.food[produto] || restaurante.drinks[produto]) {
+          conta += restaurante.food[produto] || restaurante.drinks[produto];
+        }
+      });
+      Number((conta += conta * 0.1).toFixed(2)); // vi no codeReviw de Rafael Almeida como fazer>>> tofixed serve para fixar a quantidade de casas decimais convertendo para o numero mais proximo
+      return conta;
+    },
+  };
+  Object.assign(restaurante, objetoPassadoPorParametro);//para o obeto passado quando chama a função ser copiado de parametro para restaurante com todos os valores;
+  return restaurante;
 };
 
-const meuRestaurante = createMenu({
-  food: { coxinha: 3.90, sanduiche: 9.90 },
+const objetoRetornado = createMenu({
+  food: { coxinha: 3.90, sanduiche: 9.90, sashimi: 20.90 },
   drinks: { agua: 3.90, cerveja: 6.90 },
 });
 
-meuRestaurante.order('coxinha');
+    objetoRetornado.order('coxinha');
+    objetoRetornado.order('agua');
+    //objetoRetornado.order('sopa');
+    objetoRetornado.order('sashimi');
 
-console.log(meuRestaurante.consumption);
+console.log(objetoRetornado);
+console.log(objetoRetornado.pay());
 module.exports = createMenu;
