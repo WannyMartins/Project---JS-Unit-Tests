@@ -95,7 +95,7 @@ const createMenu = (objetoPassadoPorParametro) => {
       return conta;
     },
   };
-  Object.assign(restaurante, objetoPassadoPorParametro);//para o obeto passado quando chama a função ser copiado de parametro para restaurante com todos os valores;
+  Object.assign(restaurante, objetoPassadoPorParametro); // para o obeto passado quando chama a função ser copiado de parametro para restaurante com todos os valores;
   return restaurante;
 };
 
@@ -106,7 +106,6 @@ const objetoRetornado = createMenu({
 
     objetoRetornado.order('coxinha');
     objetoRetornado.order('agua');
-    //objetoRetornado.order('sopa');
     objetoRetornado.order('sashimi');
 
 console.log(objetoRetornado);
